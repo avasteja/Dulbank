@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DulBank</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #222; 
+            color: #fff; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: auto; 
+            padding: 20px; 
+        }
+        .section { 
+            margin: 20px 0; 
+            padding: 15px; 
+            border-radius: 10px; 
+            background: #333; 
+        }
+        button { 
+            padding: 10px; 
+            margin: 10px; 
+            cursor: pointer; 
+        }
+        img { 
+            max-width: 100px; 
+            margin: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DulBank</h1>
+        <img src="dulbank_logo.png" alt="Логотип DulBank">
+        <h2>Владелец банка</h2>
+        <img src="/mnt/data/file-H2GsuGJo9Fy5duiS1vTwTu" alt="Жданов Иван Денисович">
+        <p>Жданов Иван Денисович</p>
+        <p>Ваша валюта: <span id="balance">0</span> Монстрихи</p>
+        <p>Ваши криптовалютные активы: <span id="crypto">0</span> Дулькоинов</p>
+        
+        <div class="section">
+            <h2>Как заработать Монстрихи</h2>
+            <img src="monstrik.png" alt="Монстрик">
+            <button onclick="earnMoney()">Ебать монстрих на спичке</button>
+        </div>
+        
+        <div class="section">
+            <h2>Как добыть Дулькоины</h2>
+            <img src="dulcoin.png" alt="Дулькоин">
+            <button onclick="mineCrypto()">Майнить Дулькоины</button>
+        </div>
+        
+        <div class="section">
+            <h2>Игры и предметы</h2>
+            <img src="metro_royale.png" alt="Метро Рояль">
+            <p>Метро Рояль - 500 Монстрихи</p>
+            <button onclick="buyItem(500)">Купить</button>
+        </div>
+        
+        <div class="section">
+            <h2>Баба Лариса</h2>
+            <img src="baba_larisa.png" alt="Баба Лариса">
+            <p>Баба Лариса может дать вам денег!</p>
+            <button onclick="getMoneyFromLarisa()">Попросить у Ларисы</button>
+        </div>
+        
+        <div class="section">
+            <h2>Донат</h2>
+            <img src="pubg.png" alt="PUBG">
+            <p>Вы можете отправить донат в PUBG, чтобы поддержать любимую игру!</p>
+            <button onclick="donatePUBG()">Донатить 200 Монстрихи</button>
+        </div>
+        
+        <div class="section">
+            <h2>Реклама и спонсоры DulBank</h2>
+            <p>Наши спонсоры:</p>
+            <img src="/mnt/data/file-TAkwkMsNiHp8ZJdBwukYse" alt="ЧВК Квас">
+            <p>ЧВК "Квас" - защищаем ваши вложения!</p>
+            <img src="max_yasik.png" alt="Провайдеры Макс и Ясик">
+            <p>Провайдеры Макс и Ясик - связь без границ!</p>
+            <img src="nekita.png" alt="Некита">
+            <p>Некита - предоставил Дулину жильё!</p>
+        </div>
+    </div>
+
+    <script>
+        let balance = 0;
+        let crypto = 0;
+
+        function earnMoney() {
+            balance += 100;
+            updateBalance();
+        }
+
+        function mineCrypto() {
+            crypto += Math.floor(Math.random() * 5) + 1;
+            updateCrypto();
+        }
+
+        function buyItem(cost) {
+            if (balance >= cost) {
+                balance -= cost;
+                alert("Вы купили Метро Рояль!");
+            } else {
+                alert("Не хватает Монстрих!");
+            }
+            updateBalance();
+        }
+
+        function getMoneyFromLarisa() {
+            let amount = Math.floor(Math.random() * 300) + 100;
+            balance += amount;
+            alert("Баба Лариса дала вам " + amount + " Монстрих!");
+            updateBalance();
+        }
+
+        function donatePUBG() {
+            if (balance >= 200) {
+                balance -= 200;
+                alert("Вы отправили донат в PUBG! Спасибо за поддержку!");
+            } else {
+                alert("Не хватает Монстрихи для доната!");
+            }
+            updateBalance();
+        }
+
+        function updateBalance() {
+            document.getElementById("balance").innerText = balance;
+        }
+
+        function updateCrypto() {
+            document.getElementById("crypto").innerText = crypto;
+        }
+    </script>
+</body>
+</html>
